@@ -110,8 +110,8 @@ public class CardsController {
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String color,
             @RequestParam(required = false) String status,
-            @RequestParam(required = false) Integer page,
-            @RequestParam(required = false) Integer size,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "1") int size,
             @RequestParam(required = false) String sortBy) {
         List<Card> cards = cardService.getFilteredAndSortedCards(user_id,name, color, status, page, size, sortBy);
         return ResponseEntity.ok(cards);

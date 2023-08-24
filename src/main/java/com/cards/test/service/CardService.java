@@ -13,6 +13,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,16 +41,29 @@ public class CardService {
         cardRepository.deleteById(id);
     }
 
-    public List<Card> getFilteredAndSortedCards(String user_id, String name, String color, String status, Integer page, Integer size, String sortBy) {
-//        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
-//
-//        User currentUser = userRepository.findByEmail(user_id).get();
-//
-//        Page<Card> cardPage = cardRepository.findByUserAndNameContainingAndColorContainingAndStatusContaining(
-//                currentUser, name, color, status, pageable);
-//
-//        return cardPage.getContent();
-        return null;
+    public List<Card> getFilteredAndSortedCards(Long user_id, String name, String color, String status, Integer page, Integer size, String sortBy) {
+        List<Card> result = new ArrayList<>();
+
+        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+
+
+        if(name == null) {
+            result = cardRepository.findByMail(user_id);
+        }else if(color ==null){
+            result = cardRepository.findByMail(user_id);
+        }else if(status == null){
+            result = cardRepository.findByMail(user_id);
+        }else if(!name.isEmpty()){
+            Page<Card> cardPage = cardRepository.findCardsByName(name,pageable);
+            result = cardPage.getContent();
+        } else if(!color.isEmpty()){
+            Page<Card> cardPage  = cardRepository.findCardByColor(color,pageable);
+            result = cardPage.getContent();
+        }
+
+
+        return result;
+
     }
 
 

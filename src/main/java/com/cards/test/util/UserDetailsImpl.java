@@ -26,6 +26,7 @@ public class UserDetailsImpl implements UserDetails {
 
     public UserDetailsImpl(String email, String password,
                            Collection<? extends GrantedAuthority> authorities) {
+        this.username = email;
         this.email = email;
         this.password = password;
         this.authorities = authorities;
@@ -46,7 +47,6 @@ public class UserDetailsImpl implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
-
 
     public String getEmail() {
         return email;
