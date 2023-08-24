@@ -1,0 +1,28 @@
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+  datasource:
+    password: cards$101
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: cards
+    url: jdbc:mysql://localhost:3306/cards
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+swagger:
+  enable: 'true'
+pass:
+  secret: cards124
+jwt:
+  secret: cardsqaz
+  ExpirationMs: '86400000'
+server:
+  tomcat:
+    max-connections: 10000
+    max-threads: '500'
+  port: 8081
