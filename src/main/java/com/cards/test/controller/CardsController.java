@@ -7,6 +7,7 @@ import com.cards.test.model.UserModel;
 import com.cards.test.service.CardService;
 import com.cards.test.service.UserService;
 import com.cards.test.util.CardStatus;
+import com.cards.test.util.Erole;
 import com.cards.test.util.ResourceNotFoundException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,26 +43,34 @@ public class CardsController {
 
 
     @GetMapping("/fetch_cards")
-//    @PreAuthorize("hasRole('ADMIN')")
-    public List<Card> getAllCards() {
-        return cardService.getAllCards();
+    public ResponseEntity<?> getAllCards(@RequestParam Long user_id) {
+        try {
+            Erole role = userService.findUserById(user_id).get().getRole().iterator().next().getName();
+            if (role.name().equals("ROLE_ADMIN")) {
+                responseMap.put("code", "00");
+                responseMap.put("status", cardService.getAllCards());
+            }
+        } catch (Exception e) {
+            responseMap.put("code", "01");
+            responseMap.put("status", "Fetching cards failed for this member of id " + user_id);
+        }
+        return ResponseEntity.ok(responseMap);
+
     }
 
     @GetMapping("/get_cards")
-//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getUserCards(@RequestBody CardModel model) {
         try {
             responseMap.put("code", "00");
             responseMap.put("status", cardService.findByMail(model.getUser_id()));
         } catch (Exception e) {
-            responseMap.put("code", "00");
+            responseMap.put("code", "01");
             responseMap.put("status", "fetching cards failed for this member of id " + model.getUser_id());
         }
         return ResponseEntity.ok(responseMap);
     }
 
     @PutMapping("/update_card")
-//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> updateCard(@RequestBody CardModel model) {
         List<Card> cardx = cardService.findByMail(model.getUser_id());
         try {
@@ -85,7 +94,6 @@ public class CardsController {
     }
 
     @PostMapping("/create_card")
-//    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> createCard(@RequestBody CardModel model) {
 
         try {
@@ -98,10 +106,9 @@ public class CardsController {
                 card.setCreated_at(new Date());
                 card.setUpdated_at(new Date());
                 card.setStatus(CardStatus.TO_DO);
+                responseMap.put("code", "00");
+                responseMap.put("status", cardService.saveCard(card));
             }
-
-            responseMap.put("code", "00");
-            responseMap.put("status", cardService.saveCard(card));
         } catch (Exception e) {
             responseMap.put("code", "01");
             responseMap.put("status", "Card not updated:-" + model.getName());
@@ -130,11 +137,11 @@ public class CardsController {
     public ResponseEntity<?> getFilteredAndSortedCards(
             @RequestParam(required = false) Long user_id,
             @RequestParam String color,
-            @RequestParam(required = false) String page,
-            @RequestParam(required = false) String size,
-            @RequestParam(required = false) String sortBy) {
+            @RequestParam(defaultValue = "0") Integer page,
+            @RequestParam(defaultValue = "3") Integer size,
+            @RequestParam(required = false) String sort) {
         try {
-            List<Card> cards = cardService.getFilteredAndSortedCards(user_id, color, parseInt(page), parseInt(size), sortBy);
+            List<Card> cards = cardService.getFilteredAndSortedCards(user_id, color, page, size, sort);
             responseMap.put("code", "00");
             responseMap.put("status", cards);
         } catch (Exception e) {

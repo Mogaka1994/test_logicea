@@ -32,25 +32,20 @@ public class CardService {
         cardRepository.deleteById(id);
     }
 
-    public List<Card> getFilteredAndSortedCards(Long user_id, String color,Integer page, Integer size, String sortBy) {
-        List<Card> result = cardRepository.findByMail(user_id);
+    public List<Card> getFilteredAndSortedCards(long user_id, String color, Integer page, Integer size, String sortBy) {
+        if (cardRepository.findByMail(user_id).size() > 1) {
 
-        Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));
+            Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
 
-        if (color != null || !color.isEmpty()) {
-            Page<Card> cardPage = cardRepository.findByByColor(color, user_id, pageable);
-            result = cardPage.getContent();
+            return cardRepository.findByColor("#", pageable);
         }
 
 
-        return result;
+
+        return null;
 
     }
 
-    public List<Card> getAllCardx(Pageable pagingSort) {
-        return cardRepository.findAllCardx(pagingSort);
-
-    }
 }
 
 

@@ -35,4 +35,8 @@ public class UserService {
     public boolean findUserByID(Long user_id) {
         return userRepository.findById(user_id).isPresent();
     }
+
+    public Optional<User> findUserById(Long user_id) {
+        return userRepository.findById(user_id);
+    }
 }

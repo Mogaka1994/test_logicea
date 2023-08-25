@@ -62,7 +62,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests()
 //                .requestMatchers("/api/test/**").permitAll()
                 .requestMatchers("/api/auth/signin").permitAll()
-                .anyRequest().permitAll();
+                .anyRequest().authenticated();
 
         httpSecurity.authenticationProvider(authenticationProvider());
 
