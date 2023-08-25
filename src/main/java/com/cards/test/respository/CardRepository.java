@@ -18,7 +18,12 @@ public interface CardRepository  extends JpaRepository<Card,Long> {
     @Query(value = "SELECT * FROM cards WHERE user_id =?1", nativeQuery = true)
     List<Card> findByMail(Long user_id);
 
-    Page<Card> findCardsByName(String name, Pageable pageable);
+    @Query(value = "SELECT * FROM cards WHERE name =?1 AND user_id =?1", nativeQuery = true)
+    Page<Card> findCardsByName(String status,Long user_id, Pageable pageable);
 
-    Page<Card> findCardByColor(String color, Pageable pageable);
+    List<Card> findAllCardx(Pageable pagingSort);
+
+    @Query(value = "SELECT * FROM cards WHERE color =?1 AND user_id =?1", nativeQuery = true)
+    Page<Card> findByByColor(String color,Long user_id, Pageable pageable);
+
 }

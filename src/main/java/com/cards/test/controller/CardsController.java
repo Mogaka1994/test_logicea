@@ -10,16 +10,22 @@ import com.cards.test.util.CardStatus;
 import com.cards.test.util.ResourceNotFoundException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.persistence.criteria.Order;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+
+import static java.lang.Integer.parseInt;
+import static java.lang.Long.parseLong;
 
 @RestController
 @RequestMapping("/api/cards")
@@ -44,16 +50,23 @@ public class CardsController {
     @GetMapping("/get_cards")
 //    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> getUserCards(@RequestBody CardModel model) {
-        return ResponseEntity.ok(cardService.findByMail(model.getUser_id()));
+        try {
+            responseMap.put("code", "00");
+            responseMap.put("status", cardService.findByMail(model.getUser_id()));
+        } catch (Exception e) {
+            responseMap.put("code", "00");
+            responseMap.put("status", "fetching cards failed for this member of id " + model.getUser_id());
+        }
+        return ResponseEntity.ok(responseMap);
     }
 
     @PutMapping("/update_card")
 //    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<?> updateCard(@RequestBody CardModel model) throws JsonProcessingException {
+    public ResponseEntity<?> updateCard(@RequestBody CardModel model) {
         List<Card> cardx = cardService.findByMail(model.getUser_id());
         try {
-            if(userService.findUserByID(model.getUser_id())) {
-                Card card = cardx.get(model.getId()-1);
+            if (userService.findUserByID(model.getUser_id())) {
+                Card card = cardx.get(model.getId() - 1);
                 card.setColor(model.getColor());
                 card.setName(model.getName());
                 card.setDescription(model.getDesc());
@@ -65,34 +78,43 @@ public class CardsController {
         } catch (Exception e) {
             e.printStackTrace();
             responseMap.put("code", "01");
-            responseMap.put("status", "Card not updated:-"+model.getName());
+            responseMap.put("status", "Card not updated:-" + model.getName());
         }
-        return ResponseEntity.ok(new ObjectMapper().writeValueAsString(responseMap));
+        return ResponseEntity.ok(responseMap);
 
     }
 
     @PostMapping("/create_card")
 //    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Card> createCard(@RequestBody CardModel model) {
-        Card card = new Card();
-        if(userService.findUserByID(model.getUser_id())) {
-            card.setName(model.getName());
-            card.setColor(model.getColor());
-            card.setDescription(model.getDesc());
-            card.setUser_id(model.getUser_id());
-            card.setCreated_at(new Date());
-            card.setUpdated_at( new Date());
-            card.setStatus(CardStatus.TO_DO);
+    public ResponseEntity<?> createCard(@RequestBody CardModel model) {
+
+        try {
+            Card card = new Card();
+            if (userService.findUserByID(model.getUser_id())) {
+                card.setName(model.getName());
+                card.setColor(model.getColor());
+                card.setDescription(model.getDesc());
+                card.setUser_id(model.getUser_id());
+                card.setCreated_at(new Date());
+                card.setUpdated_at(new Date());
+                card.setStatus(CardStatus.TO_DO);
+            }
+
+            responseMap.put("code", "00");
+            responseMap.put("status", cardService.saveCard(card));
+        } catch (Exception e) {
+            responseMap.put("code", "01");
+            responseMap.put("status", "Card not updated:-" + model.getName());
         }
-        return ResponseEntity.ok(cardService.saveCard(card));
+        return ResponseEntity.ok(responseMap);
     }
 
     @DeleteMapping("/del_card")
-    public ResponseEntity<?> deleteCard(@RequestBody CardModel model) throws JsonProcessingException {
+    public ResponseEntity<?> deleteCard(@RequestBody CardModel model) {
         List<Card> card = cardService.findByMail(model.getUser_id());
         try {
-            if(userService.findUserByID(model.getUser_id())) {
-                cardService.deleteCardById(card.get(model.getId() -1).getId());
+            if (userService.findUserByID(model.getUser_id())) {
+                cardService.deleteCardById(card.get(model.getId() - 1).getId());
                 responseMap.put("code", "00");
                 responseMap.put("status", "Card Successfully deleted");
             }
@@ -101,19 +123,26 @@ public class CardsController {
             responseMap.put("code", "01");
             responseMap.put("status", "Card not deleted");
         }
-        return ResponseEntity.ok(new ObjectMapper().writeValueAsString(responseMap));
+        return ResponseEntity.ok(responseMap);
     }
 
     @GetMapping("/get_filtered_cards")
     public ResponseEntity<?> getFilteredAndSortedCards(
-            @RequestParam(required = false) String user_id,
-            @RequestParam(required = false) String name,
-            @RequestParam(required = false) String color,
-            @RequestParam(required = false) String status,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "1") int size,
+            @RequestParam(required = false) Long user_id,
+            @RequestParam String color,
+            @RequestParam(required = false) String page,
+            @RequestParam(required = false) String size,
             @RequestParam(required = false) String sortBy) {
-        List<Card> cards = cardService.getFilteredAndSortedCards(user_id,name, color, status, page, size, sortBy);
-        return ResponseEntity.ok(cards);
+        try {
+            List<Card> cards = cardService.getFilteredAndSortedCards(user_id, color, parseInt(page), parseInt(size), sortBy);
+            responseMap.put("code", "00");
+            responseMap.put("status", cards);
+        } catch (Exception e) {
+            e.printStackTrace();
+            responseMap.put("code", "01");
+            responseMap.put("status", "Card not fetched");
+        }
+        return ResponseEntity.ok(responseMap);
     }
+
 }

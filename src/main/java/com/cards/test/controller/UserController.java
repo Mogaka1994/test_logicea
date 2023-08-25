@@ -18,8 +18,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-
 import java.util.*;
 
 @RestController
@@ -59,7 +57,7 @@ public class UserController {
                                         .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                                 roles.add(adminRole);
                                 break;
-                            case "mod":
+                            case "mem":
                                 Roles modRole = userService.findByName(Erole.ROLE_MEMBER)
                                         .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                                 roles.add(modRole);
@@ -71,6 +69,7 @@ public class UserController {
                 userService.saveUser(user);
                 responseMap.put("code", "00");
                 responseMap.put("status", "Successfully registered");
+                responseMap.put("message",user);
             } else {
                 responseMap.put("code", "01");
                 responseMap.put("status", "User exists registered");

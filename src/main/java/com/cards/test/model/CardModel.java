@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({"user_id","name","color","desc","status"})
+@JsonPropertyOrder({"user_id","id","name","color","desc","status"})
 public class CardModel {
 
     private Long user_id;
