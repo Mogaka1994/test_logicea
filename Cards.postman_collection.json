@@ -1,455 +1,455 @@
 {
-	"info": {
-		"_postman_id": "27810353-4afc-4478-bdba-f9ff5903cb73",
-		"name": "Cards",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7115652"
-	},
-	"item": [
-		{
-			"name": "http://localhost:8081/api/cards/create_user",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"polycarpmogaka16@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"role\": [\r\n        \"admin\",\r\n        \"mod\"\r\n    ]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/create_user",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"create_user"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/auth/signin",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"email\": \"polycarpmogaka16@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/auth/signin",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"auth",
-						"signin"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/create_cards",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"polycarpmogaka16@gmail.com\",\r\n    \"desc\": \"12345678\",\r\n    \"color\": \"#FFFFF\",\r\n    \"user_id\":1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/create_card",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"create_card"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/del_card",
-			"request": {
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"polycarpmogaka16@gmail.com\",\r\n    \"desc\": \"dsfghj\",\r\n    \"color\": \"#ghgj\",\r\n    \"id\":2,\r\n    \"user_id\":1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/del_card?",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"del_card"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/update_card",
-			"request": {
-				"method": "PUT",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"polycarpmogaka16@gmail.com\",\r\n    \"desc\": \"dsfghj\",\r\n    \"color\": \"#ghgj\",\r\n    \"id\":1,\r\n    \"user_id\":1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/update_card",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"update_card"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/get_cards",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"user_id\":1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/get_cards",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"get_cards"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/fetch_cards",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/fetch_cards",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"fetch_cards"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/get_filtered_cards?page=1&size=5&user_id=1&color=FFFFF&sort=status",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"card15\",\r\n    \"desc\": \"12345678\",\r\n    \"color\": \"#FFFFF\",\r\n    \"user_id\":1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/get_filtered_cards?page=1&size=5&user_id=1&color=FFFFF&sort=status",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"get_filtered_cards"
-					],
-					"query": [
-						{
-							"key": "page",
-							"value": "1"
-						},
-						{
-							"key": "size",
-							"value": "5"
-						},
-						{
-							"key": "user_id",
-							"value": "1"
-						},
-						{
-							"key": "color",
-							"value": "FFFFF"
-						},
-						{
-							"key": "sort",
-							"value": "status"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/fetch_cards?user_id=1",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/fetch_cards?user_id=4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"fetch_cards"
-					],
-					"query": [
-						{
-							"key": "user_id",
-							"value": "4"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/create_cards",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"polycarpmogaka16@gmail.com\",\r\n    \"desc\": \"12345678\",\r\n    \"color\": \"#FFFFF\",\r\n    \"user_id\":1\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/create_card",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"create_card"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8081/api/cards/fetch_cards?user_id=1",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8081/api/cards/fetch_cards?user_id=4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8081",
-					"path": [
-						"api",
-						"cards",
-						"fetch_cards"
-					],
-					"query": [
-						{
-							"key": "user_id",
-							"value": "4"
-						}
-					]
-				}
-			},
-			"response": []
-		}
-	]
+  "info": {
+    "_postman_id": "27810353-4afc-4478-bdba-f9ff5903cb73",
+    "name": "Cards",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "7115652"
+  },
+  "item": [
+    {
+      "name": "http://localhost:8081/api/cards/create_user",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"polycarpmogaka16@gmail.com\",\r\n    \"password\": \"12345678\",\r\n    \"role\": [\r\n        \"admin\",\r\n        \"mod\"\r\n    ]\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/create_user",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "create_user"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/auth/signin",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"polycarpmogaka16@gmail.com\",\r\n    \"password\": \"12345678\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/auth/signin",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "auth",
+            "signin"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/create_cards",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"polycarpmogaka16@gmail.com\",\r\n    \"desc\": \"12345678\",\r\n    \"color\": \"#FFFFF\",\r\n    \"user_id\":1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/create_card",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "create_card"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/del_card",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"polycarpmogaka16@gmail.com\",\r\n    \"desc\": \"dsfghj\",\r\n    \"color\": \"#ghgj\",\r\n    \"id\":2,\r\n    \"user_id\":1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/del_card?",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "del_card"
+          ],
+          "query": [
+            {
+              "key": "",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/update_card",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"polycarpmogaka16@gmail.com\",\r\n    \"desc\": \"dsfghj\",\r\n    \"color\": \"#ghgj\",\r\n    \"id\":1,\r\n    \"user_id\":1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/update_card",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "update_card"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/get_cards",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"user_id\":1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/get_cards",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "get_cards"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/fetch_cards",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/fetch_cards",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "fetch_cards"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/get_filtered_cards?page=1&size=5&user_id=1&color=FFFFF&sort=status",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"card15\",\r\n    \"desc\": \"12345678\",\r\n    \"color\": \"#FFFFF\",\r\n    \"user_id\":1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/get_filtered_cards?page=1&size=5&user_id=1&color=FFFFF&sort=status",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "get_filtered_cards"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "size",
+              "value": "5"
+            },
+            {
+              "key": "user_id",
+              "value": "1"
+            },
+            {
+              "key": "color",
+              "value": "FFFFF"
+            },
+            {
+              "key": "sort",
+              "value": "status"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/fetch_cards?user_id=1",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/fetch_cards?user_id=4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "fetch_cards"
+          ],
+          "query": [
+            {
+              "key": "user_id",
+              "value": "4"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/create_cards",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"polycarpmogaka16@gmail.com\",\r\n    \"desc\": \"12345678\",\r\n    \"color\": \"#FFFFF\",\r\n    \"user_id\":1\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/create_card",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "create_card"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost:8081/api/cards/fetch_cards?user_id=1",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwb2x5Y2FycG1vZ2FrYTIxQGdtYWlsLmNvbSIsImlhdCI6MTY5MzAwMjAzMywiZXhwIjoxNjkzMDg4NDMzfQ.YQOjSggn1aARqoO37uCapNPNXTk_jHQYLaXhRmexgAIGfAHNLQG24LGQCnV8lcjz2IFH3mWBZ5ip1IPO1UFMow",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/cards/fetch_cards?user_id=4",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8081",
+          "path": [
+            "api",
+            "cards",
+            "fetch_cards"
+          ],
+          "query": [
+            {
+              "key": "user_id",
+              "value": "4"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
 }

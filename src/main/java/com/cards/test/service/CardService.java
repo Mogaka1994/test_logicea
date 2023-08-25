@@ -3,7 +3,6 @@ package com.cards.test.service;
 import com.cards.test.entity.Card;
 import com.cards.test.respository.CardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -37,9 +36,8 @@ public class CardService {
 
             Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy).ascending());
 
-            return cardRepository.findByColor("#", pageable);
+            return cardRepository.findByColor("#" + color, pageable);
         }
-
 
 
         return null;

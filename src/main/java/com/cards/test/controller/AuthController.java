@@ -6,7 +6,6 @@ import com.cards.test.respository.RoleRepository;
 import com.cards.test.respository.UserRepository;
 import com.cards.test.util.JwtUtils;
 import com.cards.test.util.UserDetailsImpl;
-import org.hibernate.dialect.function.SybaseTruncFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

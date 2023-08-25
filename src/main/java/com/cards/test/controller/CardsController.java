@@ -1,32 +1,19 @@
 package com.cards.test.controller;
 
 import com.cards.test.entity.Card;
-import com.cards.test.entity.User;
 import com.cards.test.model.CardModel;
-import com.cards.test.model.UserModel;
 import com.cards.test.service.CardService;
 import com.cards.test.service.UserService;
 import com.cards.test.util.CardStatus;
 import com.cards.test.util.Erole;
-import com.cards.test.util.ResourceNotFoundException;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.persistence.criteria.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
-import java.util.*;
-
-import static java.lang.Integer.parseInt;
-import static java.lang.Long.parseLong;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/cards")

@@ -13,7 +13,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({"email","password","status","role"})
+@JsonPropertyOrder({"email", "password", "status", "role"})
 public class UserModel {
 
     @JsonProperty("email")
